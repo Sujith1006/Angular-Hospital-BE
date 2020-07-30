@@ -1,0 +1,4 @@
+type Roominfo{
+  id:ID! @id
+  Status:Boolean!
+}

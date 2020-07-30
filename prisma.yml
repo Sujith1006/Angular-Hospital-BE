@@ -1,0 +1,19 @@
+endpoint: http://localhost:4466
+datamodel: 
+        - ./Model/user.datamodel
+        - ./Model/patientinfo.datamodel
+        - ./Model/roomdetails.datamodel
+        - ./Model/roomallocate.datamodel
+        - ./Model/medication.datamodel
+
+       
+
+
+
+      
+
+            
+            
+generate:
+  - generator: javascript-client
+    output: ./generated/prisma-client/

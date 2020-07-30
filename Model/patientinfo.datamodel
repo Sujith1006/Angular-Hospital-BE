@@ -1,0 +1,13 @@
+type Patientinfo{
+  id:ID! @id
+  Patientname:String!
+  PatientAddress:String!
+  PatientGender:String!
+  PatientPhonenumber:String! 
+  PatientBloodgroup:String!
+  PatientSymptoms:String!
+  Roomallocated:Boolean!
+  Discharged:Boolean!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}

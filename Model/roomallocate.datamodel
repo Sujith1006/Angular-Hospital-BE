@@ -1,0 +1,8 @@
+type Roomallocate{
+  id:ID! @id
+  Roomid:Roominfo
+  Personid:Patientinfo
+  Patientstatus:Boolean
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}

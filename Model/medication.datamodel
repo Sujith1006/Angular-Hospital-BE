@@ -1,0 +1,7 @@
+type Medication{
+  id:ID! @id
+  Patient:Patientinfo
+  Medicalrounds:Int
+  Discharge:Boolean!
+
+}

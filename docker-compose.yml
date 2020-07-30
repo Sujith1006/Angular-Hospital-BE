@@ -1,0 +1,64 @@
+version: "3"
+services:
+  frontend:
+    container_name: angular_hospital
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    image: sujith/angular_hospital
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./Frontend:/usr/src/app
+  backend:
+    links: 
+      - postgres
+      - prisma
+    depends_on: 
+      - postgres
+      - prisma
+    container_name: angular_hospital_backend
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    image: sujith/angular_hospital_backend 
+    ports:
+      - "8081:8081"
+    
+    volumes:
+      - ./Backend:/usr/src/app
+    environment: 
+      PRISMA_ENDPOINT: http://prisma:4466
+  prisma:
+        links: 
+          - postgres
+        depends_on: 
+          - postgres
+        image: prismagraphql/prisma:1.34
+        restart: always
+        ports:
+          - '4466:4466'
+        environment:
+              PRISMA_CONFIG: |
+                port: 4466
+                databases:
+                  default:
+                    connector: postgres
+                    host: postgres
+                    port: 5432
+                    user: sujith
+                    password: v
+        
+  postgres:
+        image: postgres:10.3
+        restart: always
+        environment:
+          POSTGRES_USER: sujith
+          POSTGRES_PASSWORD: v
+        volumes:
+          - ./datapg:/var/lib/postgresql/data
+        ports: 
+          - '5032:5432'
+volumes:
+      postgres: ~
+
